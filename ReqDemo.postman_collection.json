@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "582e79ad-321b-46c4-9392-e17214b52da7",
+		"name": "ReqDemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40789382",
+		"_collection_link": "https://orange-satellite-167930.postman.co/workspace/DAY1~2d777264-0f20-42c8-bee7-d4a3edd23219/collection/40789382-582e79ad-321b-46c4-9392-e17214b52da7?action=share&source=collection_link&creator=40789382"
+	},
+	"item": [
+		{
+			"name": "Folder 1",
+			"item": [
+				{
+					"name": "Req 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var random=Math.floor(Math.random()*11);\r",
+									"pm.variables.set(\"Randomvar\",random)\r",
+									"console.log(\"Pre-Request Script:req level-3\" )"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(\"Test Script: req level-3\");\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/todos/{{Randomvar}}",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"todos",
+								"{{Randomvar}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"console.log(\"Pre-Request Script: Folder level-2\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"console.log(\"Test Script: Folder level-2\");"
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"console.log(\"Pre-Request Script: Collection level-1\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"console.log(\"Test Script: Collection level-1\");"
+				]
+			}
+		}
+	]
+}
